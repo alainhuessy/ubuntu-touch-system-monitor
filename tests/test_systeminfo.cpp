@@ -1,16 +1,5 @@
 #include "test_systeminfo.h"
 
-class TestSystemInfo : public QObject
-{
-    Q_OBJECT
-
-private slots:
-    void testCpuUsage();
-    void testRamUsage();
-    void testStorageUsage();
-    void testUpdateInfo();
-};
-
 void TestSystemInfo::testCpuUsage()
 {
     SystemInfo info;

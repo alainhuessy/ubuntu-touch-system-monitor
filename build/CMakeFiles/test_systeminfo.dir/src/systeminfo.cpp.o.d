@@ -1,4 +1,4 @@
-CMakeFiles/systemmonitor.dir/src/systeminfo.cpp.o: \
+CMakeFiles/test_systeminfo.dir/src/systeminfo.cpp.o: \
  /media/ubuntu/leer/Github/Systemmonitor/src/systeminfo.cpp \
  /usr/include/stdc-predef.h \
  /media/ubuntu/leer/Github/Systemmonitor/src/systeminfo.h \
