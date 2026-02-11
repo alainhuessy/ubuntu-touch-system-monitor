@@ -80,6 +80,6 @@ MIT License - siehe [LICENSE](LICENSE) für Details.
 
 ## Kontakt
 
-Alain Huessy - alain@example.com
+Alain Huessy - alainhuessy@gmx.ch
 
 Projekt-Link: [https://github.com/alainhuessy/ubuntu-touch-system-monitor](https://github.com/alainhuessy/ubuntu-touch-system-monitor)

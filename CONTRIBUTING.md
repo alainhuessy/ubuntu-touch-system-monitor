@@ -55,4 +55,4 @@ Vielen Dank für dein Interesse, zu diesem Projekt beizutragen! Wir freuen uns �
 Durch das Beitragen stimmst du zu, dass deine Beiträge unter der MIT-Lizenz veröffentlicht werden.
 
 ## Kontakt
-Bei Fragen: Öffne ein Issue oder kontaktiere Alain Huessy (alain@example.com).
+Bei Fragen: Öffne ein Issue oder kontaktiere Alain Huessy (alainhuessy@gmx.ch).
