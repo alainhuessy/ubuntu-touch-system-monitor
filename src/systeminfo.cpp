@@ -25,10 +25,10 @@ QString SystemInfo::storageUsage() const
 
 void SystemInfo::updateInfo()
 {
-    // Placeholder: In real implementation, read from /proc/stat, /proc/meminfo, etc.
-    m_cpuUsage = "50%";
-    m_ramUsage = "2GB / 8GB";
-    m_storageUsage = "100GB / 256GB";
+    // Placeholder-Implementierung für Ubuntu Touch
+    m_cpuUsage = "45%";
+    m_ramUsage = "1024 MB / 4096 MB";
+    m_storageUsage = "50 GB / 128 GB";
 
     emit cpuUsageChanged();
     emit ramUsageChanged();

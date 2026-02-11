@@ -1,0 +1,5 @@
+module SystemMonitor
+typeinfo systemmonitor.qmltypes
+prefer :/SystemMonitor/
+Main 1.0 qml/Main.qml
+

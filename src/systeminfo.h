@@ -18,6 +18,8 @@ public:
     QString ramUsage() const;
     QString storageUsage() const;
 
+    void updateInfo();  // Für Tests public machen
+
 signals:
     void cpuUsageChanged();
     void ramUsageChanged();
@@ -27,8 +29,6 @@ private:
     QString m_cpuUsage;
     QString m_ramUsage;
     QString m_storageUsage;
-
-    void updateInfo();
 };
 
 #endif // SYSTEMINFO_H

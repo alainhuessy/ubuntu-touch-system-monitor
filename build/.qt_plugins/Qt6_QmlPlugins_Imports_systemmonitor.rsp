@@ -1,0 +1,14 @@
+-rootPath
+/media/ubuntu/leer/Github/Systemmonitor
+-cmake-output
+-output-file
+/media/ubuntu/leer/Github/Systemmonitor/build/.qt_plugins/Qt6_QmlPlugins_Imports_systemmonitor.cmake
+-importPath
+/media/ubuntu/leer/Github/Systemmonitor/build/SystemMonitor
+-importPath
+/media/ubuntu/leer/Github/Systemmonitor/build
+-importPath
+/usr/lib/x86_64-linux-gnu/qt6/qml
+-qrcFiles
+/media/ubuntu/leer/Github/Systemmonitor/build/.rcc/qmake_SystemMonitor.qrc
+/media/ubuntu/leer/Github/Systemmonitor/build/.rcc/systemmonitor_raw_qml_0.qrc

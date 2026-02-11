@@ -3,14 +3,14 @@
 Du arbeitest **testgetrieben**.
 
 ## Regeln
-- Schreibe zuerst Tests
+- Schreibe zuerst Tests (Qt Test für C++)
 - Keine Implementierung ohne Test
 - Halte Funktionen klein
 - Erkläre jede Funktion auf Deutsch
-- Nutze pathlib statt os.path
+- Nutze Qt/C++ Best Practices
 
 ## Ziel
-Ein robustes, nachvollziehbares Prüfwerkzeug für Bauwerksdokumentationen.
+Eine native Ubuntu Touch Systemmonitor App mit QML und C++, optimiert für Volla-Tablet und OpenStore.
 
 - [x] Verify that the copilot-instructions.md file in the .github directory is created.
 

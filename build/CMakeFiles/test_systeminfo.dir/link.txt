@@ -1,0 +1,1 @@
+/usr/bin/c++ CMakeFiles/test_systeminfo.dir/test_systeminfo_autogen/mocs_compilation.cpp.o CMakeFiles/test_systeminfo.dir/tests/test_systeminfo.cpp.o CMakeFiles/test_systeminfo.dir/src/systeminfo.cpp.o -o test_systeminfo  /usr/lib/x86_64-linux-gnu/libQt6Test.so.6.4.2 /usr/lib/x86_64-linux-gnu/libQt6Core.so.6.4.2 

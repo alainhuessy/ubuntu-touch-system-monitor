@@ -1,341 +1,155 @@
 # GitHub Copilot – Implementierungsspezifikation
-# Projekt: Bauwerksdokumentations-Prüfer (12er / KBOB)
+# Projekt: Ubuntu Touch System Monitor
 
 ---
 
 ## 🎯 Projektziel (verbindlich)
 
-Implementiere ein **lokal lauffähiges Python-Tool**, das Bauwerksdokumentationen
-nach **zwei unterschiedlichen Strukturstandards** prüft:
+Implementiere eine **native Ubuntu Touch App**, die Systeminformationen (CPU, RAM, Speicher) in Echtzeit anzeigt. Die App läuft auf Ubuntu Touch-Geräten wie dem Volla-Tablet und ist für den OpenStore optimiert.
 
-- 12er-Struktur (vereinfachte, klassische Ablagestruktur)
-- KBOB-Struktur (Schweizer Branchenstandard)
-
-Das Tool prüft **Struktur, Dateinamen, Inhalte und Konsistenz** und erzeugt
-einen **HTML-Prüfbericht**.  
-Alle Prüfungen laufen **ausschließlich lokal**, **offline**, **ohne Admin-Rechte**
-und **ohne Cloud-Dienste**.
+- **Technologie:** QML für UI, C++ für Logik, CMake für Build.
+- **Plattform:** Ubuntu Touch (ARM-basiert).
+- **Vertrieb:** OpenStore (kostenlos, Open-Source).
 
 ---
 
 ## 🧠 Grundprinzipien (NICHT VERHANDELBAR)
 
 ### 1. Testgetriebene Entwicklung (TDD)
-- **Jede Funktion beginnt mit pytest-Tests**
-- Tests müssen zuerst **fehlschlagen**
-- Erst danach Implementierung
-- Erst wenn **alle Tests grün** sind → nächster Schritt
+- **Jede Funktion beginnt mit Tests** (Qt Test für C++).
+- Tests müssen zuerst **fehlschlagen**.
+- Erst danach Implementierung.
+- Erst wenn **alle Tests grün** sind → nächster Schritt.
 
 ### 2. Code-Qualität
-- Python **3.11**
-- **PEP8-konform**
-- Kleine, gut testbare Funktionen
-- Keine globalen Seiteneffekte
-- Klare Modultrennung
+- C++17, QML-konform.
+- Klare Trennung: UI (QML) ↔ Logik (C++).
+- Keine globalen Seiteneffekte.
+- Modularer Aufbau.
 
 ### 3. Dokumentation
-- Jede Funktion besitzt:
-  - Deutschen Docstring
-  - Typannotationen
-  - Klare Beschreibung der Seiteneffekte
+- Jede Funktion/C++-Klasse besitzt:
+  - Doxygen-Kommentare.
+  - Klare Beschreibung der Seiteneffekte.
 
-### 4. Pfadsicherheit
-- Ausschließlich `pathlib`
-- Keine Arbeit außerhalb erlaubter Projektpfade
-- **Pfad-Ausbruch ist verboten**
+### 4. Sicherheit
+- Keine unsicheren Systemaufrufe.
+- Respektiere Ubuntu Touch Berechtigungen.
 
 ### 5. Plattformunabhängigkeit
-- Windows & macOS
-- Keine Annahmen über `/` oder `\`
-- Keine hardcodierten Pfade
+- Optimiert für ARM/Ubuntu Touch.
+- Keine Annahmen über Hardware.
 
 ---
 
 ## 🚫 Verbotene Dinge
 
 Copilot DARF NICHT:
-- virtuelle Umgebungen (.venv) anlegen
-- Adminrechte voraussetzen
-- Internetzugriffe durchführen
-- externe APIs verwenden
-- Dateien ohne Bestätigung verändern
-- Logik in die GUI verschieben
-- Tests überspringen
+- Nicht-Qt Frameworks verwenden.
+- Internetzugriffe ohne Berechtigung.
+- Unsichere Code-Praktiken.
+- Tests überspringen.
 
 ---
 
 ## 🧩 Fachliche Rahmenbedingungen
 
-### Projektinput
-- Ein oder mehrere Projektordner
-- Projektordner liegen auf Netzwerklaufwerken
-- Nur Pfade aus `.env` / `settings.yaml` sind erlaubt
+### App-Funktionen
+- Echtzeit-Anzeige von CPU-Auslastung, RAM-Verbrauch, Speicherplatz.
+- Einfache, touch-optimierte UI.
+- Hintergrund-Updates alle 1-2 Sekunden.
 
-### Strukturdefinition
-- Wird **bei jeder Prüfung neu** aus einer Excel-Datei geladen
-- Struktur ist **dynamisch**
-- Anzahl Ebenen kann variieren
-- Einträge können:
-  - Verzeichnisse
-  - Pflichtdokumente
-  - optionale Dokumente sein
+### Technische Anforderungen
+- Click-Package für OpenStore.
+- Manifest.json mit korrekten Metadaten.
+- Apparmor-Profil für Systemzugriffe.
 
 ---
 
 ## 🔁 Gesamtprogrammablauf (fachlich)
 
-0. Struktur (12er oder KBOB) auswählen und Excel laden  
-1. Projekt-Backup erstellen  
-2. Projektordner vollständig scannen (rekursiv)  
-3. macOS-Dateien erkennen und optional löschen  
-4. Dateinamen normalisieren (Umlaute, Kodierungsfehler)  
-5. Ordnerstruktur prüfen und ggf. korrigieren  
-6. Dateinummern prüfen, verschieben, ergänzen  
-7. Erste Inhaltsprüfung (leer / Platzhalter / Planerkennung)  
-8. HTML-Prüfbericht erzeugen  
-9. Ergebnisse in GUI anzeigen  
+1. App starten und UI laden.
+2. Systeminformationen sammeln (C++ Backend).
+3. Daten an QML UI senden.
+4. UI aktualisieren und anzeigen.
+5. Bei App-Schließen Ressourcen freigeben.
 
 ---
 
 ## 📐 Entwicklungsphasen (zwingende Reihenfolge)
 
----
-
-### 🔹 PHASE 1 – Projektgrundlage & Infrastruktur
-
-**Ziel:** lauffähiges Grundgerüst mit Tests
+### 🔹 PHASE 1 – Projektgrundlage
+**Ziel:** Grundstruktur mit CMake, QML, C++.
 
 Aufgaben:
-- Projektstruktur gemäß `STRUKTUR.md` anlegen
-- Logging-Grundlage erstellen
-- Konfigurationsladefunktion implementieren
+- CMakeLists.txt für Qt/QML.
+- Basis-QML UI.
+- Einfache C++-Klasse für Systeminfo (Platzhalter).
 
 Tests:
-- Projekt kann importiert werden
-- Logging erzeugt Logdatei
-- Konfiguration wird korrekt geladen
+- App kompiliert.
+- UI lädt.
 
-Ergebnis:
-- Basis steht
-- Keine Fachlogik
-
----
-
-### 🔹 PHASE 2 – Excel-Strukturimport
-
-**Ziel:** Strukturdefinition aus Excel robust einlesen
+### 🔹 PHASE 2 – Systeminformationen
+**Ziel:** Echte Systemdaten sammeln.
 
 Aufgaben:
-- Excel-Datei laden
-- Relevante Spalten erkennen
-- Interne Strukturrepräsentation erzeugen
+- C++-Code für CPU/RAM/Speicher lesen.
+- Qt Signals für UI-Updates.
 
 Tests:
-- Excel mit variabler Tiefe
-- Ungültige Zeilen
-- Leere Excel
-- Unterschiedliche Strukturstandards
+- Daten werden korrekt gelesen.
+- Updates funktionieren.
 
-Ergebnis:
-- Struktur als Python-Objekt verfügbar
-- Keine Abhängigkeit von GUI
-
----
-
-### 🔹 PHASE 3 – Projekt-Scan & Sicherheit
-
-**Ziel:** Projektordner vollständig und sicher erfassen
+### 🔹 PHASE 3 – UI-Polish
+**Ziel:** Touch-optimierte UI.
 
 Aufgaben:
-- Rekursiver Scan aller Dateien & Ordner
-- Pfadvalidierung gegen erlaubte Root-Pfade
-- Metadaten erfassen
+- Responsive Design.
+- Icons und Farben.
 
-Tests:
-- Erlaubter Pfad → OK
-- Nicht erlaubter Pfad → Abbruch
-- Symlink-Ausbruch verhindern
-
-Ergebnis:
-- Vollständige Ist-Struktur
-
----
-
-### 🔹 PHASE 4 – Ordnerstrukturprüfung
-
-**Ziel:** Soll- vs. Ist-Struktur vergleichen
+### 🔹 PHASE 4 – Packaging
+**Ziel:** Click-Package erstellen.
 
 Aufgaben:
-- Fehlende Ordner erkennen
-- Zusätzliche Ordner erkennen
-- Falsche Ebene erkennen
-- Vorschläge zur Korrektur erzeugen
+- Manifest.json, Apparmor, Desktop-Datei.
+- Clickable Build testen.
 
-Tests:
-- Fehlende Hauptordner
-- Fehlende Unterordner
-- Doppelte Ordner
-- Inkonsistente Nummerierung
-
-Ergebnis:
-- Struktur-Diff als Datenobjekt
-
----
-
-### 🔹 PHASE 5 – Dateinamen- & Nummernlogik
-
-**Ziel:** Einheitliche Dateibenennung sicherstellen
+### 🔹 PHASE 5 – Store-Submission
+**Ziel:** Für OpenStore vorbereiten.
 
 Aufgaben:
-- Umlaute & Kodierungsfehler korrigieren
-- Dateinummern prüfen
-- Dateien ggf. verschieben
-- Nummern fortlaufend vergeben
-
-Tests:
-- Umlautersetzung
-- Nummer doppelt
-- Nummer fehlt
-- Datei im falschen Ordner
-
-Ergebnis:
-- Umbenennungsvorschläge
-- Keine automatische Änderung ohne Bestätigung
-
----
-
-### 🔹 PHASE 6 – Inhaltsbasierte Basisprüfung
-
-**Ziel:** offensichtliche Inhaltsprobleme erkennen
-
-Aufgaben:
-- Leere Dateien erkennen
-- Platzhaltertexte erkennen
-- Pläne klassifizieren
-
-Tests:
-- 0-Byte-Datei
-- Platzhaltertext
-- PDF ohne Text
-- Planformate (DWG, PDF-Plan)
-
-Ergebnis:
-- Markierte Dateien im Bericht
-
----
-
-### 🔹 PHASE 7 – HTML-Prüfbericht
-
-**Ziel:** nachvollziehbarer, professioneller Bericht
-
-Aufgaben:
-- HTML-Template verwenden
-- Tabellen & Diagramme erzeugen
-- Hyperlinks zu Dateien
-- Zusammenfassung
-- **Korrekte hierarchische Darstellung:** Baumstruktur mit depth-basierter Einrückung für beide Strukturtypen (12er und KBOB)
-
-Tests:
-- Bericht wird erzeugt
-- Enthält alle Pflichtsektionen
-- Links korrekt
-- Hierarchie korrekt eingerückt
-
-Ergebnis:
-- HTML-Bericht im Projektordner
-
----
-
-### 🔹 PHASE 8 – Streamlit-GUI
-
-**Ziel:** Benutzerfreundliche Oberfläche mit Datenintegration
-
-Aufgaben:
-- Projekt- & Strukturauswahl
-- **JSON-basierte Datenintegration:**
-  - Lädt Vergleichsergebnisse aus `structure_analysis_result.json`
-  - Zeigt SOLL-IST-Vergleich visuell an
-  - Interaktive Baumstruktur mit Status-Farbcodes
-  - Filterbare Listen (fehlend/zusätzlich korrekt/falsch)
-- Fortschrittsanzeige
-- Echtzeit-Vorschau
-- Expertenmodus (ausklappbar)
-
-Architektur:
-- **Datenquelle:** JSON-Dateien aus Phase 4-7
-- **Präsentation:** Reine Anzeigelogik, keine Vergleichslogik
-- **Interaktivität:** Filter, Suche, Export-Optionen
-
-Tests:
-- Smoke-Test (App startet)
-- JSON-Ladevorgang
-- GUI-Interaktionen
-- Konfigurationswechsel
-
-Ergebnis:
-- GUI als Einstiegspunkt mit voller Datenintegration
+- Finale Tests.
+- Dokumentation.
 
 ---
 
 ## 🏗️ Architekturprinzipien
 
-### Datenfluss-Architektur
-- **Phase 4-7:** Vergleichslogik → JSON-Output (`structure_analysis_result.json`)
-- **Phase 8:** GUI lädt JSON → Interaktive Visualisierung
-- **Trennung:** Logik (Phasen 1-7) ↔ Präsentation (Phase 8)
-
-### JSON-Struktur Standard
-Alle Analyseergebnisse folgen einheitlichem JSON-Format:
-```json
-{
-  "metadata": {"timestamp": "...", "sources": {...}},
-  "summary": {"fehlend": 0, "zusätzlich_korrekt": 0, "zusätzlich_falsch": 0},
-  "details": {"fehlend": [...], "zusätzlich_korrekt": [...], "zusätzlich_falsch": [...]},
-  "tree_structure": {...}
-}
-```
-
-### Wiederverwendbarkeit
-- JSON-Daten können von HTML-Berichten, GUI und zukünftigen APIs genutzt werden
-- Klare Trennung von Berechnung und Darstellung
-- Offline-fähig und cachbar
+- **MVC:** QML (View), C++ (Model/Controller).
+- **Signals/Slots:** Für Datenfluss.
+- **Modular:** Trennung von UI und Logik.
 
 ---
 
 ## 🧪 Tests – verbindliche Regeln
 
-- Tests liegen ausschließlich in `tests/`
-- Testdaten ausschließlich in `tests/data/`
-- Keine echten Projektdaten
-- Tests müssen reproduzierbar sein
+- Qt Test für C++.
+- QML-Tests optional.
 
 ---
 
 ## 🔐 Sicherheitsregeln
 
-- Keine Dateimanipulation ohne Bestätigung
-- Backup vor jeder Änderung
-- Keine Daten außerhalb Projektordner
-- Logging aller Änderungen
+- Nur notwendige Berechtigungen.
+- Keine Root-Zugriffe.
 
 ---
 
 ## 📌 Definition of Done (DoD)
 
 Ein Feature gilt als abgeschlossen, wenn:
-- Alle Tests grün sind
-- Code dokumentiert ist
-- Keine Pfadunsicherheiten existieren
-- Keine Seiteneffekte ohne Logging auftreten
-- Feature plattformunabhängig funktioniert
-
----
-
-## 🧠 Erweiterungen (NICHT JETZT)
-
-- LLM / NER / Embeddings
-- FAISS / SQLite
-- llama-cpp-python (GGUF)
-
-Diese Themen sind **explizit außerhalb der Basisimplementierung**
-und werden erst nach stabiler Kernfunktion betrachtet.
+- Alle Tests grün sind.
+- Code dokumentiert ist.
+- App auf Ubuntu Touch läuft.
+- Click-Package erstellbar ist.

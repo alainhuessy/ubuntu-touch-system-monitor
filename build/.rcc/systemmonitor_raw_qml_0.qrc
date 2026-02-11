@@ -1,0 +1,6 @@
+<RCC>
+  <qresource prefix="/SystemMonitor/">
+    <file alias="qml/Main.qml">/media/ubuntu/leer/Github/Systemmonitor/qml/Main.qml</file>
+  </qresource>
+</RCC>
+

@@ -1,0 +1,78 @@
+{
+    "classes": [
+        {
+            "className": "SystemInfo",
+            "object": true,
+            "properties": [
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 0,
+                    "name": "cpuUsage",
+                    "notify": "cpuUsageChanged",
+                    "read": "cpuUsage",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 1,
+                    "name": "ramUsage",
+                    "notify": "ramUsageChanged",
+                    "read": "ramUsage",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                },
+                {
+                    "constant": false,
+                    "designable": true,
+                    "final": false,
+                    "index": 2,
+                    "name": "storageUsage",
+                    "notify": "storageUsageChanged",
+                    "read": "storageUsage",
+                    "required": false,
+                    "scriptable": true,
+                    "stored": true,
+                    "type": "QString",
+                    "user": false
+                }
+            ],
+            "qualifiedClassName": "SystemInfo",
+            "signals": [
+                {
+                    "access": "public",
+                    "name": "cpuUsageChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "ramUsageChanged",
+                    "returnType": "void"
+                },
+                {
+                    "access": "public",
+                    "name": "storageUsageChanged",
+                    "returnType": "void"
+                }
+            ],
+            "superClasses": [
+                {
+                    "access": "public",
+                    "name": "QObject"
+                }
+            ]
+        }
+    ],
+    "inputFile": "systeminfo.h",
+    "outputRevision": 68
+}
