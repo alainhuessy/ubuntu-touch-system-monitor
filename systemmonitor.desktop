@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=System Monitor
+Comment=Echtzeit-Systemmonitor für Ubuntu Touch
+Exec=systemmonitor
+Icon=systemmonitor
+Terminal=false
+Type=Application
+X-Ubuntu-Touch=true
