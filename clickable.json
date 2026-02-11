@@ -1,10 +1,4 @@
 {
-    "name": "systemmonitor",
-    "version": "0.1",
-    "title": "System Monitor",
-    "maintainer": "Alain Huessy <alainhuessy@gmx.ch>",
-    "description": "Echtzeit-Systemmonitor für Ubuntu Touch, optimiert für Volla-Tablet und Volla-Phone. Zeigt CPU, RAM und Speicher an.",
-    "architectures": ["armhf"],
     "framework": "ubuntu-sdk-20.04",
-    "build": "cmake .. && make"
+    "builder": "cmake"
 }

@@ -37,3 +37,21 @@ Eine native Ubuntu Touch Systemmonitor App mit QML und C++, optimiert für Volla
 
 - [x] Ensure Documentation is Complete
 	<!-- README.md und copilot-instructions.md aktualisieren. -->
+
+- [ ] Phase 6: Batteriestatus hinzufügen
+	<!-- Batterie-Level, Ladezustand und Restlaufzeit implementieren. Tests zuerst, dann C++/QML, Apparmor aktualisieren. -->
+
+- [ ] Phase 7: Temperaturüberwachung hinzufügen
+	<!-- CPU-Temperatur mit Warnfarben anzeigen. Tests, C++, QML, Apparmor. -->
+
+- [ ] Phase 8: Netzwerk-Statistiken hinzufügen
+	<!-- Upload/Download-Raten anzeigen. Tests, C++, QML, Apparmor. -->
+
+- [ ] Phase 9: Prozessliste hinzufügen
+	<!-- Top-Prozesse nach CPU/RAM. Tests, C++, QML, Apparmor. -->
+
+- [ ] Phase 10: Historische Daten und Diagramme hinzufügen
+	<!-- Trends mit Charts. Tests, C++, QML, QtCharts hinzufügen. -->
+
+- [ ] Phase 11: Benachrichtigungen hinzufügen
+	<!-- Alarme bei hohen Auslastungen. Tests, C++, QML, Notification API. -->
