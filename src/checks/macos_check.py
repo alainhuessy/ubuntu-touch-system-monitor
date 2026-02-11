@@ -1,0 +1,1 @@
+# Placeholder für macOS Check
