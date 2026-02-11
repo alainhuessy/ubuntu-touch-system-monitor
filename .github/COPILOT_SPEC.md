@@ -1,5 +1,27 @@
 # GitHub Copilot – Implementierungsspezifikation
-# Projekt: Ubuntu Touch System Monitor
+# Projekt: Ubuntu Touch System Monitor für Volla-Geräte
+
+---
+
+## 📋 Gesamtplan (TL;DR)
+Entwickle eine native Ubuntu Touch App zur Echtzeit-Anzeige von CPU, RAM und Speicher, optimiert für Volla-Tablet (8") und Volla-Phone (6.3"), aber kompatibel mit allen Ubuntu Touch-Geräten durch responsive QML-Layouts. Testgetriebene Entwicklung mit Qt/C++, von Grundstruktur bis OpenStore-Submission. Fokus auf Sicherheit, Performance und Touch-Optimierung.
+
+### Schritte (Steps)
+1. **PHASE 1: Projektgrundlage** – Erstelle CMake-Struktur, Basis-QML UI mit responsive Elementen für Volla-Bildschirmgrößen, C++ SystemInfo-Klasse (Platzhalter). Tests: Kompilierung und UI-Ladung auf simulierten Größen.
+2. **PHASE 2: Systeminformationen** – Implementiere echte Datenabfrage aus /proc/stat, /proc/meminfo, df. Qt Signals für Updates. Tests: Datenkorrektheit und Signal-Emission.
+3. **PHASE 3: UI-Polish** – Responsive QML-Layouts (z. B. kompakt für 6.3", erweitert für 8"), Touch-Gesten, Icons. Tests: UI auf verschiedenen Geräten.
+4. **PHASE 4: Packaging** – Click-Package mit Manifest.json, Apparmor-Profil, Desktop-Datei. Clickable Build testen. Tests: Package-Installation auf Ubuntu Touch.
+5. **PHASE 5: Store-Submission** – Finale Tests auf Volla- und anderen Geräten, Dokumentation (README, Screenshots). OpenStore-Upload vorbereiten.
+
+### Verifikation (Verification)
+- **Tests:** Qt Test für C++, QML-Tests optional; alle Phasen mit grünen Tests abschließen.
+- **Build:** CMake erfolgreich, Clickable-Package erstellbar.
+- **Laufzeit:** App startet auf Ubuntu Touch-Emulator und realen Geräten (Volla-Fokus).
+- **Kompatibilität:** Keine Fehler auf anderen Ubuntu Touch-Geräten.
+
+### Entscheidungen (Decisions)
+- **Volla-Fokus:** Spezifische Optimierungen (z. B. Layouts), aber allgemeine Kompatibilität durch responsive Design.
+- **Technologie:** QML + C++ für native Performance, keine Python-Alternativen.
 
 ---
 
